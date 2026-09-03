@@ -1,1 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zain | Personal Profile</title>
+<meta name="description" content="Zain's personal profile and portfolio website">
 
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#07111f;
+color:#f5f8ff;
+line-height:1.6;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+width:92%;
+max-width:1100px;
+margin:auto;
+}
+
+header{
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(7,17,31,.95);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav{
+height:70px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+font-size:25px;
+font-weight:800;
+}
+
+.logo span{
+color:#59c7ff;
+}
+
+.menu{
+display:flex;
+gap:25px;
+}
+
+.menu a{
+color:#aebed0;
+font-size:14px;
+}
+
+.menu a:hover{
+color:#59c7ff;
+}
+
+.hero{
+min-height:calc(100vh - 70px);
+display:flex;
+align-items:center;
+padding:70px 0;
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:50px;
+align-items:center;
+}
+
+.badge{
+display:inline-block;
+padding:8px 14px;
+border:1px solid rgba(255,255,255,.12);
+border-radius:30px;
+color:#59c7ff;
+background:rgba(255,255,255,.04);
+font-size:12px;
+font-weight:bold;
+}
+
+h1{
+font-size:clamp(50px,8vw,82px);
+line-height:1;
+letter-spacing:-4px;
+margin:22px 0;
+}
+
+h1 span{
+color:#59c7ff;
+}
+
+.hero-text{
+color:#aebed0;
+font-size:18px;
+max-width:650px;
+}
+
+.buttons{
+display:flex;
+gap:12px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:13px 19px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.12);
+font-weight:bold;
+font-size:14px;
+}
+
+.primary{
+background:linear-gradient(135deg,#59c7ff,#8374ff);
+color:#06101b;
+border:none;
+}
+
+.profile-card{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.1);
+border-radius:26px;
+padding:20px;
+}
+
+.profile-photo{
+aspect-ratio:1;
+border-radius:20px;
+background:linear-gradient(135deg,#174a73,#292458);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:100px;
+font-weight:800;
+}
+
+.profile-info{
+padding:17px 3px 3px;
+}
+
+.profile-info strong{
+display:block;
+font-size:21px;
+}
+
+.profile-info small{
+color:#aebed0;
+}
+
+section{
+padding:85px 0;
+}
+
+.title{
+font-size:36px;
+margin-bottom:8px;
+}
+
+.subtitle{
+color:#aebed0;
+margin-bottom:32px;
+}
+
+.card-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.card{
+background:#0d1b2d;
+border:1px solid rgba(255,255,255,.08);
+border-radius:20px;
+padding:25px;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.card p{
+color:#aebed0;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.photo{
+aspect-ratio:4/3;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+color:#dff2ff;
+background:linear-gradient(135deg,#174a73,#292458);
+}
+
+.photo:nth-child(2){
+background:linear-gradient(135deg,#28525b,#48264e);
+}
+
+.photo:nth-child(3){
+background:linear-gradient(135deg,#315179,#214e50);
+}
+
+.photo:nth-child(4){
+background:linear-gradient(135deg,#4a3564,#214a65);
+}
+
+.photo:nth-child(5){
+background:linear-gradient(135deg,#295345,#2a3c6a);
+}
+
+.photo:nth-child(6){
+background:linear-gradient(135deg,#55365c,#285062);
+}
+
+.contact{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.contact a{
+color:#59c7ff;
+}
+
+footer{
+border-top:1px solid rgba(255,255,255,.08);
+padding:28px 0;
+text-align:center;
+color:#8193a8;
+font-size:13px;
+}
+
+@media(max-width:780px){
+
+.hero-grid{
+grid-template-columns:1fr;
+}
+
+.profile-card{
+max-width:420px;
+margin:auto;
+}
+
+.card-grid,
+.gallery{
+grid-template-columns:1fr 1fr;
+}
+
+.menu{
+display:none;
+}
+}
+
+@media(max-width:480px){
+
+.card-grid,
+.gallery,
+.contact{
+grid-template-columns:1fr;
+}
+
+h1{
+letter-spacing:-2px;
+}
+
+.hero{
+padding:50px 0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container nav">
+
+<a class="logo" href="#home">
+Zain<span>.</span>
+</a>
+
+<nav class="menu">
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+
+<div class="container hero-grid">
+
+<div>
+
+<span class="badge">
+PERSONAL PROFILE • PORTFOLIO
+</span>
+
+<h1>
+Hello, I'm <span>Zain</span>.
+</h1>
+
+<p class="hero-text">
+Welcome to my personal website. This is a professional demo
+that can later be customized with my real information,
+photos, projects and social links.
+</p>
+
+<div class="buttons">
+
+<a class="btn primary" href="#about">
+Explore Profile
+</a>
+
+<a class="btn" href="#contact">
+Contact Me
+</a>
+
+</div>
+
+</div>
+
+<div class="profile-card">
+
+<div class="profile-photo">
+Z
+</div>
+
+<div class="profile-info">
+
+<strong>Zain</strong>
+
+<small>
+Personal Profile • Pakistan
+</small>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<div class="container">
+
+<h2 class="title">
+About Me
+</h2>
+
+<p class="subtitle">
+A short introduction about me.
+</p>
+
+<div class="card">
+
+<h3>
+My Story
+</h3>
+
+<p>
+ABC XYZ is demo text. This section can contain your
+real biography, interests, goals, professional journey
+and other public information that you want visitors
+to know about you.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="skills">
+
+<div class="container">
+
+<h2 class="title">
+Skills & Interests
+</h2>
+
+<p class="subtitle">
+Things I enjoy and work with.
+</p>
+
+<div class="card-grid">
+
+<div class="card">
+<h3>💻 Technology</h3>
+<p>
+ABC technology, websites and digital tools.
+</p>
+</div>
+
+<div class="card">
+<h3>🎨 Creative</h3>
+<p>
+XYZ design, content and creative projects.
+</p>
+</div>
+
+<div class="card">
+<h3>🚀 Projects</h3>
+<p>
+Personal projects, portfolio work and future ideas.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="gallery">
+
+<div class="container">
+
+<h2 class="title">
+Photo Gallery
+</h2>
+
+<p class="subtitle">
+Demo photos — your own photos can be added later.
+</p>
+
+<div class="gallery">
+
+<div class="photo">DEMO PHOTO 01</div>
+<div class="photo">DEMO PHOTO 02</div>
+<div class="photo">DEMO PHOTO 03</div>
+<div class="photo">DEMO PHOTO 04</div>
+<div class="photo">DEMO PHOTO 05</div>
+<div class="photo">DEMO PHOTO 06</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="container">
+
+<h2 class="title">
+Contact
+</h2>
+
+<p class="subtitle">
+Only public information should be placed here.
+</p>
+
+<div class="contact">
+
+<div class="card">
+
+<h3>
+Email
+</h3>
+
+<p>
+<a href="mailto:demo@example.com">
+demo@example.com
+</a>
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+Social Media
+</h3>
+
+<p>
+
+<a href="#">
+Facebook
+</a>
+
+&nbsp; · &nbsp;
+
+<a href="#">
+Instagram
+</a>
+
+&nbsp; · &nbsp;
+
+<a href="#">
+WhatsApp
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+© 2026 Zain. All rights reserved.
+
+</footer>
+
+</body>
+  </html>
